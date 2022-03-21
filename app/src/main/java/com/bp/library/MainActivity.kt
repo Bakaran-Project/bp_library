@@ -15,8 +15,15 @@ import com.bp.library.ui.theme.BpLibraryTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * author Trian Damai
+ * created_at 21/03/22 - 13.45
+ * site https://trian.app
+ */
 @ExperimentalAnimationApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

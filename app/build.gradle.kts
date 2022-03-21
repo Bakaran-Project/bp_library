@@ -141,11 +141,21 @@ dependencies {
         implementation(googlePlayKotlinCoroutine)
     }
 
-
-
     //logcat
     with(Libs.Com.Squareup.Logcat){
         implementation(logcat)
+    }
+
+    //retrofit
+    with(Libs.Com.Squareup.Retrofit2){
+        implementation(retrofit)
+        implementation(gsonFactory)
+    }
+    //okhttp
+    with(Libs.Com.Squareup.Okhttp3){
+        implementation(okhttp)
+        implementation(loggingInterceptor)
+        implementation(mockWebServer)
     }
 
     //icon
@@ -153,8 +163,7 @@ dependencies {
         implementation(octicons)
         implementation(feather)
     }
-
-
+    
     //system ui controller
     with(Libs.Com.Google.Accompanist){
         implementation(accompanistSystemUiController)
@@ -174,14 +183,14 @@ dependencies {
 
     implementation(Libs.Com.Github.GrenderG.toasty)
 
-//    local unit test
+    //local unit test
     testImplementation(Libs.Junit.junit)
     testImplementation(Libs.Com.Google.Truth.truth)
     androidTestImplementation(Libs.Com.Google.Truth.truth)
-//    instrumentation test
+
+    //instrumentation test
     androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.espressoCore)
-
     androidTestImplementation(Libs.Org.Jetbrains.Kotlinx.kotlinxCoroutinesTest)
 
 

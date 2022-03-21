@@ -64,7 +64,21 @@ object Libs {
                 val logcat by lazy {"com.squareup.logcat:logcat:0.1"}
 
             }
+            object Retrofit2{
+                private var retrofit_version = "2.9.0"
+                var retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
+                var gsonFactory = "com.squareup.retrofit2:converter-gson:$retrofit_version"
+            }
+
+            object Okhttp3{
+                private var okhttp_version = "4.9.0"
+                var okhttp = "com.squareup.okhttp3:okhttp:$okhttp_version"
+                var loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+                var mockWebServer = "com.squareup.okhttp3:mockwebserver:$okhttp_version"
+            }
+
         }
+
     }
     object AndroidX{
         object Multidex{
