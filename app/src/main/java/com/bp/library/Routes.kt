@@ -7,4 +7,13 @@ package com.bp.library
  */
 object Routes {
     const val SPLASH = "SPLASH"
+
+    const val DASHBOARD= "DASHBOARD"
+
+    object Dashboard{
+        const val HOME = "HOME"
+        const val STATISTIC = "STATISTIC"
+        const val BOOKMARK = "BOOKMARK"
+        const val PROFILE = "PROFILE"
+    }
 }

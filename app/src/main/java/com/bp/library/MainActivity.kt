@@ -11,9 +11,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.bp.library.ui.pages.PageSplashScreen
+import com.bp.library.ui.pages.dashboard.PageBookmark
+import com.bp.library.ui.pages.dashboard.PageHome
+import com.bp.library.ui.pages.dashboard.PageProfile
+import com.bp.library.ui.pages.dashboard.PageStatistic
 import com.bp.library.ui.theme.BpLibraryTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.animation.navigation
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,7 +46,21 @@ class MainActivity : ComponentActivity() {
                         startDestination = Routes.SPLASH
                     ){
                         composable(Routes.SPLASH){
-
+                            PageSplashScreen(router = router)
+                        }
+                        navigation(route = Routes.DASHBOARD, startDestination = Routes.Dashboard.HOME){
+                            composable(Routes.Dashboard.HOME){
+                                PageHome(router = router)
+                            }
+                            composable(Routes.Dashboard.STATISTIC){
+                                PageStatistic(router = router)
+                            }
+                            composable(Routes.Dashboard.BOOKMARK){
+                                PageBookmark(router = router)
+                            }
+                            composable(Routes.Dashboard.PROFILE){
+                                PageProfile(router = router)
+                            }
                         }
                     }
 

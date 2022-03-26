@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Bp-Library</string>
+    <string name="dashboard">Beranda</string>
+    <string name="statistic">Statistik</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="profile">Profil</string>
 </resources>
