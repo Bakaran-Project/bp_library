@@ -5,12 +5,18 @@
       <map>
         <entry key="../../../../layout/compose-model-1648298461830.xml" value="0.45" />
         <entry key="../../../../layout/compose-model-1648300947961.xml" value="0.24113175675675674" />
+        <entry key="../../../../layout/compose-model-1648312193232.xml" value="0.17685185185185184" />
+        <entry key="../../../../layout/compose-model-1648312925533.xml" value="0.25" />
+        <entry key="../../../../layout/compose-model-1648317528131.xml" value="0.12314814814814815" />
+        <entry key="../../../../layout/compose-model-1648317840732.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/ic_book.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_book_active.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_bookmark.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bookmark_active.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_chart_2.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_chart_2_active.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_eye_active.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_profile_active.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_scanner.xml" value="0.242" />
         <entry key="app/src/main/res/drawable/ic_scanner_active.xml" value="0.242" />
