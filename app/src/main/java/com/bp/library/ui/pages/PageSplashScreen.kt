@@ -21,7 +21,7 @@ fun PageSplashScreen(
     router: NavHostController
 ) {
     LaunchedEffect(key1 = Unit, block = {
-        router.navigate(Routes.DASHBOARD){
+        router.navigate(Routes.LOGIN){
             popUpTo(Routes.SPLASH){
                 inclusive = true
             }

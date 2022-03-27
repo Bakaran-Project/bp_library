@@ -8,6 +8,9 @@ package com.bp.library
 object Routes {
     const val SPLASH = "SPLASH"
 
+    const val LOGIN = "LOGIN"
+    const val REGISTER = "REGISTER"
+
     const val DASHBOARD= "DASHBOARD"
 
     object Dashboard{

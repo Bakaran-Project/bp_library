@@ -108,19 +108,19 @@ val Typography = Typography(
         fontSize = 18.sp
     ),
     subtitle1 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
     ),
     subtitle2 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
     ),
     body1 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
     ),
     body2 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Normal,
         fontSize = 13.sp,
     ),
     button = TextStyle(
@@ -128,7 +128,7 @@ val Typography = Typography(
         fontSize = 12.sp,
     ),
     caption = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
     ),
 

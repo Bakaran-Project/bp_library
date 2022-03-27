@@ -4,4 +4,7 @@
     <string name="statistic">Statistik</string>
     <string name="bookmark">Bookmark</string>
     <string name="profile">Profil</string>
+    <string name="welcome_to_maos">Selamat datang di MAOS</string>
+    <string name="intro">Pinjam buku lebih mudah dan lebih fleksibel untuk anda</string>
+    <string name="privacy_policy_description">Dengan melanjutkan, saya menerima Layanan kami dan mengonfirmasi bahwa saya telah membaca Kebijakan Privasi kami.</string>
 </resources>

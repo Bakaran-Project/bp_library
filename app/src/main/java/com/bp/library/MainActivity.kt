@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.bp.library.ui.pages.PageSplashScreen
+import com.bp.library.ui.pages.auth.PageLogin
+import com.bp.library.ui.pages.auth.PageRegister
 import com.bp.library.ui.pages.dashboard.PageBookmark
 import com.bp.library.ui.pages.dashboard.PageHome
 import com.bp.library.ui.pages.dashboard.PageProfile
@@ -47,6 +49,12 @@ class MainActivity : ComponentActivity() {
                     ){
                         composable(Routes.SPLASH){
                             PageSplashScreen(router = router)
+                        }
+                        composable(Routes.LOGIN){
+                            PageLogin(router = router)
+                        }
+                        composable(Routes.REGISTER){
+                            PageRegister(router = router)
                         }
                         navigation(route = Routes.DASHBOARD, startDestination = Routes.Dashboard.HOME){
                             composable(Routes.Dashboard.HOME){
