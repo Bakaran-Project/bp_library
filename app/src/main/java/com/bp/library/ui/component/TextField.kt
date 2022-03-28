@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.widget.Placeholder
 import com.bp.library.R
 import com.bp.library.ui.theme.BpLibraryTheme
+import com.bp.library.ui.theme.Danger
+import com.bp.library.ui.theme.Line
 
 /**
  *
@@ -44,7 +46,7 @@ fun TextFieldPrimary(
             style = MaterialTheme.typography.body2
         )
         Spacer(modifier = Modifier.height(8.dp))
-        TextField(
+        OutlinedTextField(
             value = value,
             onValueChange = onChange,
             placeholder={
@@ -53,10 +55,11 @@ fun TextFieldPrimary(
                     style = MaterialTheme.typography.body2
                 )
             },
-            colors = TextFieldDefaults.textFieldColors(
-                focusedIndicatorColor = MaterialTheme.colors.primary,
-                disabledIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = MaterialTheme.colors.primary,
+                unfocusedBorderColor = Color.Transparent,
+                errorBorderColor = Danger,
+                backgroundColor = Line
             ),
             shape = RoundedCornerShape(
                 size = 18.dp

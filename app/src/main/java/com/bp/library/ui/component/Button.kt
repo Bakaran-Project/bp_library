@@ -32,7 +32,8 @@ fun ButtonPrimary(
 ) {
 
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
+        enabled=enabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colors.primary
         ),
@@ -58,7 +59,8 @@ fun ButtonSecondary(
     onClick:()->Unit ={}
 ) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
+        enabled=enabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Color.White
         ),
@@ -85,7 +87,8 @@ fun ButtonVariant(
     onClick:()->Unit ={}
 ) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
+        enabled=enabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Color.White.copy(
                 alpha = 0.1f
@@ -113,7 +116,8 @@ fun ButtonGoogle(
     onClick:()->Unit ={}
 ) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
+        enabled=enabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Line
         ),

@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +32,13 @@ fun PageLogin(
     modifier: Modifier = Modifier,
     router: NavHostController
 ) {
+    var email by remember {
+        mutableStateOf(TextFieldValue(""))
+    }
+
+    var password by remember {
+        mutableStateOf(TextFieldValue(""))
+    }
    Scaffold {
        Column(
            modifier = modifier
@@ -58,16 +65,22 @@ fun PageLogin(
            )
            Spacer(modifier = modifier.height(20.dp))
            TextFieldPrimary(
-               value = TextFieldValue(""),
+               value = email,
                label = "Email",
-               placeholder = "masukkkan email"
+               placeholder = "masukkkan email",
+               onChange = {
+                   email = it
+               }
            )
            Spacer(modifier = modifier.height(8.dp))
            TextFieldPrimary(
-               value = TextFieldValue(""),
+               value = password,
                label = "Password",
                placeholder = "masukkkan password",
-               showObsecure = true
+               showObsecure = true,
+               onChange = {
+                   password = it
+               }
            )
            Spacer(modifier = modifier.height(8.dp))
            Row(
