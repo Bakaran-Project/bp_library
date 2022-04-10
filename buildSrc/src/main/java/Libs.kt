@@ -95,6 +95,7 @@ object Libs {
                 val uiTooling by lazy{"androidx.compose.ui:ui-tooling:$composeVersion"}
                 val uiTestJunit4 by lazy{"androidx.compose.ui:ui-test-junit4:$composeVersion"}
                 val uiTestManifest by lazy{"androidx.compose.ui:ui-test-manifest:$composeVersion"}
+
             }
             object Runtime{
                 val runtimeLivedata by lazy{"androidx.compose.runtime:runtime-livedata:$composeVersion"}
@@ -182,7 +183,8 @@ object Libs {
         }
     }
     object Junit{
-        val junit by lazy {"junit:junit:4.13.2"}
+        val
+                junit by lazy {"junit:junit:4.13.2"}
     }
 
 }

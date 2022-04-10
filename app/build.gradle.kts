@@ -69,6 +69,7 @@ dependencies {
         androidTestImplementation(Libs.AndroidX.Compose.Ui.uiTestJunit4)
         debugImplementation(Libs.AndroidX.Compose.Ui.uiTestManifest)
         debugImplementation(Libs.AndroidX.Compose.Ui.uiTooling)
+        androidTestImplementation(Libs.AndroidX.Compose.Ui.uiTestJunit4)
 
     }
     with(Libs.AndroidX.Lifecycle){
@@ -192,7 +193,6 @@ dependencies {
     androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.espressoCore)
     androidTestImplementation(Libs.Org.Jetbrains.Kotlinx.kotlinxCoroutinesTest)
-
 
 
 }

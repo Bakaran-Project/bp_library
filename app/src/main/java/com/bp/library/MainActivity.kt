@@ -18,11 +18,13 @@ import com.bp.library.ui.pages.dashboard.PageBookmark
 import com.bp.library.ui.pages.dashboard.PageHome
 import com.bp.library.ui.pages.dashboard.PageProfile
 import com.bp.library.ui.pages.dashboard.PageStatistic
+import com.bp.library.ui.pages.onboard.PageOnboard
 import com.bp.library.ui.theme.BpLibraryTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -30,6 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * created_at 21/03/22 - 13.45
  * site https://trian.app
  */
+@ExperimentalPagerApi
 @ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -49,6 +52,9 @@ class MainActivity : ComponentActivity() {
                     ){
                         composable(Routes.SPLASH){
                             PageSplashScreen(router = router)
+                        }
+                        composable(Routes.ONBOARD){
+                            PageOnboard(router = router)
                         }
                         composable(Routes.LOGIN){
                             PageLogin(router = router)

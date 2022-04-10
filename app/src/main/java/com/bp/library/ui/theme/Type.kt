@@ -96,23 +96,23 @@ val fontFamily = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     h1 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
     ),
     h2 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         fontSize = 21.sp
     ),
     h3 = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         fontSize = 18.sp
     ),
     subtitle1 = TextStyle(
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
     ),
     subtitle2 = TextStyle(
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
     ),
     body1 = TextStyle(
@@ -124,11 +124,11 @@ val Typography = Typography(
         fontSize = 13.sp,
     ),
     button = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         fontSize = 12.sp,
     ),
     caption = TextStyle(
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp,
     ),
 

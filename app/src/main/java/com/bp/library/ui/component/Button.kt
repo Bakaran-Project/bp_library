@@ -47,7 +47,10 @@ fun ButtonPrimary(
             defaultElevation = 0.dp
         )
     ) {
-        Text(text = text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.button
+        )
     }
 }
 
@@ -75,7 +78,10 @@ fun ButtonSecondary(
         )
 
     ) {
-        Text(text = text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.button
+        )
     }
 }
 
@@ -104,7 +110,10 @@ fun ButtonVariant(
             defaultElevation = 0.dp
         )
     ) {
-        Text(text = text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.button
+        )
     }
 }
 
@@ -141,7 +150,8 @@ fun ButtonGoogle(
             )
             Text(
                 text = text,
-                modifier = modifier.align(Alignment.Center)
+                modifier = modifier.align(Alignment.Center),
+                style = MaterialTheme.typography.button
             )
 
         }
