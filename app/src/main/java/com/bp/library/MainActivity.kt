@@ -83,6 +83,10 @@ class MainActivity : ComponentActivity() {
                         }
                         navigation(route = Routes.DASHBOARD, startDestination = Routes.Dashboard.HOME){
                             composable(Routes.Dashboard.HOME){
+                                systemUITheme.setSystemBarsColor(
+                                    color = MaterialTheme.colors.primary,
+                                    darkIcons = false,
+                                )
                                 PageHome(router = router)
                             }
                             composable(Routes.Dashboard.STATISTIC){
