@@ -73,7 +73,7 @@ fun HeaderHome(
             ) {
                 Text(
                     text = "Ego is The Enemy",
-                    style = MaterialTheme.typography.h2
+                    style = MaterialTheme.typography.h3
                 )
                 Text(
                     text = "Hari 2 dari 7",
@@ -90,7 +90,7 @@ fun HeaderHome(
         ) {
             Text(
                 text = "Selengkapnya",
-                style = MaterialTheme.typography.h2,
+                style = MaterialTheme.typography.h3,
                 color = SecondaryDarker
             )
         }
