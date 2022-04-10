@@ -133,7 +133,7 @@ fun ContentOnboard(
                 )
             )
             .background(
-                MaterialTheme.colors.background
+                MaterialTheme.colors.surface
             )
             .padding(
                 horizontal = 16.dp,
@@ -145,21 +145,24 @@ fun ContentOnboard(
         Indicators(size = pagerState.pageCount, index = pagerState.currentPage)
         Text(
             text = item.title,
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.h3,
             textAlign = TextAlign.Center,
             modifier = modifier.fillMaxWidth()
         )
-        if(pagerState.currentPage == 3) {
-            ButtonSecondary(
-                text = "Buat Akun"
-            ){
-                onRegister()
-            }
-            ButtonPrimary(
-                text = "Masuk akun",
-            ){
-                onLogin()
-            }
+        if(pagerState.currentPage == 2) {
+           Column {
+               ButtonSecondary(
+                   text = "Buat Akun"
+               ){
+                   onRegister()
+               }
+               Spacer(modifier = modifier.height(8.dp))
+               ButtonPrimary(
+                   text = "Masuk akun",
+               ){
+                   onLogin()
+               }
+           }
         }else{
             Text(
                 text = item.subtitle,

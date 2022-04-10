@@ -98,38 +98,47 @@ val Typography = Typography(
     h1 = TextStyle(
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
+        fontFamily = fontFamily
     ),
     h2 = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontSize = 21.sp
+        fontSize = 21.sp,
+        fontFamily = fontFamily
     ),
     h3 = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 18.sp,
+        fontFamily = fontFamily
     ),
     subtitle1 = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
+        fontFamily = fontFamily
     ),
     subtitle2 = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
+        fontFamily = fontFamily
     ),
     body1 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
+        fontFamily = fontFamily
     ),
     body2 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 13.sp,
+        fontFamily = fontFamily
     ),
     button = TextStyle(
         fontWeight = FontWeight.Bold,
         fontSize = 12.sp,
+        fontFamily = fontFamily
     ),
     caption = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp,
+        fontFamily = fontFamily
     ),
 
 )

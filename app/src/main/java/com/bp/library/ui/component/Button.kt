@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.bp.library.ui.theme.BpLibraryTheme
 import com.bp.library.R
 import com.bp.library.ui.theme.Line
+import com.bp.library.ui.theme.PrimaryLighter
 
 /**
  *
@@ -65,7 +66,7 @@ fun ButtonSecondary(
         onClick = onClick,
         enabled=enabled,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color.White
+            backgroundColor = PrimaryLighter
         ),
         modifier = modifier
             .fillMaxWidth()
@@ -80,7 +81,8 @@ fun ButtonSecondary(
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.button
+            style = MaterialTheme.typography.button,
+            color = MaterialTheme.colors.primary
         )
     }
 }

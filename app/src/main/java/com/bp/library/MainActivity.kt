@@ -25,6 +25,7 @@ import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -46,20 +47,38 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val router = rememberAnimatedNavController()
+                    val systemUITheme = rememberSystemUiController()
+
                     AnimatedNavHost(
                         navController = router,
                         startDestination = Routes.SPLASH
                     ){
                         composable(Routes.SPLASH){
+                            systemUITheme.setSystemBarsColor(
+                                    color = MaterialTheme.colors.surface,
+                                    darkIcons = true,
+                            )
                             PageSplashScreen(router = router)
                         }
                         composable(Routes.ONBOARD){
+                            systemUITheme.setSystemBarsColor(
+                                color = MaterialTheme.colors.primary,
+                                darkIcons = false,
+                            )
                             PageOnboard(router = router)
                         }
                         composable(Routes.LOGIN){
+                            systemUITheme.setSystemBarsColor(
+                                color = MaterialTheme.colors.surface,
+                                darkIcons = true,
+                            )
                             PageLogin(router = router)
                         }
                         composable(Routes.REGISTER){
+                            systemUITheme.setSystemBarsColor(
+                                color = MaterialTheme.colors.surface,
+                                darkIcons = true,
+                            )
                             PageRegister(router = router)
                         }
                         navigation(route = Routes.DASHBOARD, startDestination = Routes.Dashboard.HOME){
