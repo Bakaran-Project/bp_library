@@ -1,204 +1,241 @@
+@file:Suppress("UnstableApiUsage")
+/*
+ * Copyright © 2023 trian.app.
+ *
+ * Unauthorized copying, publishing of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ */
+import com.android.build.api.dsl.ApkSigningConfig
+import com.android.build.api.dsl.ApplicationBuildType
+import java.util.Properties
+import java.io.FileInputStream
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application")
-    id("dagger.hilt.android.plugin")
-    kotlin("android")
-    kotlin("kapt")
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.io.gitlab.arthubosch.detekt)
+    alias(libs.plugins.org.jetbrains.kotlin.serialization)
+    id("kotlin-parcelize")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
 
+
 android {
-    compileSdk =32
+    namespace = findProperty("APP_NAME_SPACE").toString()
+    compileSdk = 33
     defaultConfig {
-        applicationId = Version.applicationId
-        minSdk =21
-        targetSdk =30
-        versionCode =1
-        versionName = "0.0.0(10)"
+        applicationId =findProperty("APP_ID").toString()
+        minSdk = 24
+        targetSdk = 33
+        versionCode = 1
+        versionName = "1.0.202305241408"
         multiDexEnabled = true
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-
-    lint {
-        baseline = file("lint-baseline.xml")
-        abortOnError =false
-    }
-
-
-    compileOptions {
-        // Flag to enable support for the new language APIs
-        isCoreLibraryDesugaringEnabled =true
-
-        sourceCompatibility =JavaVersion.VERSION_1_8
-        targetCompatibility =JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-alpha02"
+        kotlinCompilerExtensionVersion = "1.4.0"
     }
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
-            excludes += "/META-INF/DEPENDENCIES"
         }
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = false
+    }
+
+
+    signingConfigs {
+        create("release") {
+            setupKeystore()
+        }
+    }
+    buildTypes {
+        release {
+            setupBaseUrl()
+            setupSharedPrefName()
+            isMinifyEnabled = false
+        }
+
+        debug {
+            setupBaseUrl()
+            setupSharedPrefName()
+            isDebuggable = true
+        }
+    }
+    compileOptions {
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        java{
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
+        }
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+        freeCompilerArgs = listOf(
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+            "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+            "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
+            "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+            "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
+            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+        )
+    }
+
 }
 
 dependencies {
+    implementation("com.github.triandamai.core-ui:ui:0.13")
+    implementation("com.github.triandamai.core-ui:processor:0.13")
+    ksp("com.github.triandamai.core-ui:processor:0.13")
+    coreLibraryDesugaring(libs.desugar.jdk.lib)
 
-    implementation (Libs.Com.Google.Android.Material.material)
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    implementation(libs.android.material)
+    implementation(libs.compose.markdown)
 
-    implementation(Libs.AndroidX.Multidex.multidex)
-    implementation(Libs.AndroidX.Core.coreKtx)
-    implementation(Libs.AndroidX.Activity.activityCompose)
-    with(Libs.AndroidX.Compose){
-        implementation(Libs.AndroidX.Compose.Ui.ui)
-        // https://stackoverflow.com/questions/68224361/jetpack-compose-cant-preview-after-updating-to-1-0-0-rc01
-        implementation(Libs.AndroidX.Compose.Ui.uiTooling)
-        implementation(Libs.AndroidX.Compose.Ui.uiToolingPreview)
-        implementation(Libs.AndroidX.Compose.Material.material)
-        implementation(Libs.AndroidX.Compose.Runtime.runtimeLivedata)
-        androidTestImplementation(Libs.AndroidX.Compose.Ui.uiTestJunit4)
-        debugImplementation(Libs.AndroidX.Compose.Ui.uiTestManifest)
-        debugImplementation(Libs.AndroidX.Compose.Ui.uiTooling)
-        androidTestImplementation(Libs.AndroidX.Compose.Ui.uiTestJunit4)
+    implementation(libs.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.compose.icon.extended)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.compose.material)
+    implementation(libs.compose.calendar)
+    implementation(libs.wheel.picker.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.navigation.compose)
+    implementation(libs.multidex)
 
-    }
-    with(Libs.AndroidX.Lifecycle){
-        implementation(lifecycleRuntimeKtx)
-        // ViewModel
-        implementation(lifecycleViewmodel)
-        implementation(lifecycleLivedata)
-        implementation(lifecycleRuntime)
-        implementation(lifecycleViewmodelSavedstate)
-    }
+    implementation(libs.room)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
-    testImplementation(Libs.AndroidX.Arch.Core.coreTesting)
-    androidTestImplementation(Libs.AndroidX.Arch.Core.coreTesting)
-
-    //hilt dagger (support viewModel)
-    //https://developer.android.com/training/dependency-injection/hilt-android#setup
-    //https://developer.android.com/training/dependency-injection/hilt-testing?hl=id
-    with(Libs.Com.Google.Dagger){
-        implementation(hiltAndroid)
-        kapt(hiltAndroidCompiler)
-        testImplementation(hiltAndroidTesting)
-        kaptTest(hiltAndroidCompiler)
-        androidTestImplementation(hiltAndroidTesting)
-        kaptAndroidTest(hiltAndroidCompiler)
-
+    with(libs.ktor){
+        api(client.core)
+        api(android.client)
+        api(content.negotiation)
+        api(json)
+        api(gson)
+        api(resource)
     }
 
-    implementation(Libs.Com.Github.Jeziellago.composeMarkdown)
-
-    testImplementation(Libs.Org.Mockito.mockitoCore)
-    //  Bump to 4.6.* after https://github.com/robolectric/robolectric/issues/6593 is fixed
-    testImplementation(Libs.Org.Robolectric.robolectric)
-
-    //navigation
-    //https://developer.android.com/jetpack/compose/navigation
-    implementation(Libs.AndroidX.Navigation.navigationCompose)
-
-
-    //supaya bisa inject viewModel ke navigation
-    //https://developer.android.com/jetpack/compose/libraries#hilt
-    implementation(Libs.AndroidX.Hilt.hiltNavigationCompose)
-
-    with(Libs.AndroidX.Room){
-        implementation(roomRuntime)
-        implementation(roomPaging)
-        implementation(roomKtx)
-        kapt(roomCompiler)
-        testImplementation(roomTesting)
-
+    with(libs.chuker) {
+        debugApi(debug)
+        releaseApi(release)
     }
 
-    //firebase
-    with(Libs.Com.Google.Firebase){
-        implementation(platform(bom))
+    with(libs.accompanist) {
+        implementation(pager)
+        implementation(pager.indicator)
+        implementation(flow.layout)
+        implementation(shimmer)
+    }
+    with(libs.hilt) {
+        implementation(navigation.compose)
+        implementation(android)
+        implementation(work)
+        androidTestImplementation(android.test)
+        kapt(android.compiler)
+        kaptTest(android.compiler)
+        kapt(compiler)
+    }
+
+
+
+    with(libs.gms.play.service) {
         implementation(auth)
-        implementation(firestore)
-        implementation(storage)
-        implementation(messaging)
-        implementation(crashlytics)
-        implementation(analytics)
-
-    }
-    //google auth
-    with(Libs.Com.Google.Android.Gms){
-        implementation(auth)
+        implementation(base)
     }
 
-    //allow use await() in firebase task
-    with(Libs.Org.Jetbrains.Kotlinx){
-        implementation(googlePlayKotlinCoroutine)
+    implementation(libs.kotlinx.coroutine.play.services)
+    testImplementation(libs.kotlinx.coroutine.test)
+    implementation(libs.kotlinx.coroutine.play.services)
+    testImplementation(libs.kotlinx.coroutine.test)
+
+    implementation(libs.work.runtime)
+    implementation(libs.kotlinx.serialization)
+    with(libs.kotlinx.coroutine) {
+        implementation(android)
+        implementation(core)
+        implementation(play.services)
+        testImplementation(test)
     }
 
-    //logcat
-    with(Libs.Com.Squareup.Logcat){
-        implementation(logcat)
-    }
-
-    //retrofit
-    with(Libs.Com.Squareup.Retrofit2){
-        implementation(retrofit)
-        implementation(gsonFactory)
-    }
-    //okhttp
-    with(Libs.Com.Squareup.Okhttp3){
-        implementation(okhttp)
-        implementation(loggingInterceptor)
-        implementation(mockWebServer)
-    }
-
-    //icon
-    with(Libs.Br.Com.Devsrsouza.Compose.Icons.Android){
-        implementation(octicons)
+    with(libs.composeIcons) {
         implementation(feather)
     }
-    
-    //system ui controller
-    with(Libs.Com.Google.Accompanist){
-        implementation(accompanistSystemUiController)
-        implementation(accompanistNavigationAnimation)
-        implementation(accompanistPager)
-        implementation(accompanistPagerIndicator)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.ui.test.junit4)
+    testImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
+    testImplementation(libs.robolectric)
+
+    debugImplementation(libs.leak.canary)
+
+}
+kapt {
+    correctErrorTypes = true
+}
+
+tasks.create<Copy>("installGitHook") {
+    var suffix = "macos"
+    if (org.apache.tools.ant.taskdefs.condition.Os.isFamily(org.apache.tools.ant.taskdefs.condition.Os.FAMILY_WINDOWS)) {
+        suffix = "windows"
     }
-    //image loader
-    with(Libs.Io.CoilKt){
-        implementation(coilCompose)
+
+    copy {
+        from(File(rootProject.rootDir, "scripts/pre-push-$suffix"))
+        into { File(rootProject.rootDir, ".git/hooks") }
+        rename("pre-push-$suffix", "pre-push")
     }
-
-    //chart
-    with(Libs.Com.Github.PhilJay){
-        implementation(mpAndroidChart)
+    copy {
+        from(File(rootProject.rootDir, "scripts/pre-commit-$suffix"))
+        into { File(rootProject.rootDir, ".git/hooks") }
+        rename("pre-commit-$suffix", "pre-commit")
     }
+    fileMode = "775".toInt(8)
+}
 
-    implementation(Libs.Com.Github.GrenderG.toasty)
-
-    //local unit test
-    testImplementation(Libs.Junit.junit)
-    testImplementation(Libs.Com.Google.Truth.truth)
-    androidTestImplementation(Libs.Com.Google.Truth.truth)
-
-    //instrumentation test
-    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
-    androidTestImplementation(Libs.AndroidX.Test.Espresso.espressoCore)
-    androidTestImplementation(Libs.Org.Jetbrains.Kotlinx.kotlinxCoroutinesTest)
-
-
+fun ApplicationBuildType.setupSharedPrefName() {
+    buildConfigField(
+        "String",
+        "SHARED_PREFERENCES",
+        "\"${findProperty("SHARED_PREFERENCES").toString()}\""
+    )
+}
+fun ApplicationBuildType.setupBaseUrl() {
+    buildConfigField(
+        "String",
+        "BASE_URL",
+        "\"${findProperty("BASE_URL").toString()}\""
+    )
 }
 
 
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
+//configure keystore later
+fun ApkSigningConfig.setupKeystore(){
+//    val filePath = keystoreProperties.getProperty("storeFile")
+//    keyAlias = keystoreProperties.getProperty("keyAlias")
+//    keyPassword = keystoreProperties.getProperty("keyPassword")
+//    storeFile = file(filePath)
+//    storePassword = keystoreProperties.getProperty("storePassword")
 }
